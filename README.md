@@ -101,6 +101,55 @@ As a result,
 
 If you want all HTML elements to use the updated behavior you will have to reload their scripts as shown below (provided that existing element scripts remain compatible with the updated behavior - otherwise you will have to update the element scripts anyway)
 
+### List all curently known Behavior Names ###
+
+If you want to know which behaviors have already been defined, you may use the following code:
+
+```html
+ <script type="text/hyperscript">
+  def knownBehaviorNames
+    set BehaviourKey to 'Behavior_' + Date.now() + '_' + Math.round(Math.random()*1000000)
+
+    defineBehavior(`behavior ${BehaviourKey} end`)
+
+    js (BehaviourKey)
+      let global = (new Function('return this'))()
+
+      let BehaviourPattern = global[BehaviourKey].toString()
+      delete global[BehaviourKey]
+
+      let NameList = []
+        Object.getOwnPropertyNames(global).forEach(
+          (Key) => {
+            let Descriptor = Object.getOwnPropertyDescriptor(global,Key)
+            if (
+              (typeof Descriptor.value === 'function') &&
+              (Descriptor.value.toString() === BehaviourPattern)
+            ) { NameList.push(Key) }
+          }
+        )
+      return NameList
+    end
+    return it
+  end
+ </script>
+```
+
+> Nota bene: function `knownBehaviorNames` depends on `defineBehavior` which has been mentioned above and should also be inserted into the HTML document.
+
+The following examples shows how to use `knownBehaviorNames`:
+
+```html
+ <script type="text/hyperscript">
+  behavior Test1 end
+  behavior Test2 end
+ 
+  init
+    log knownBehaviorNames()
+  end
+ </script>
+```
+
 
 
 ## License ##
