@@ -150,6 +150,39 @@ The following examples shows how to use `knownBehaviorNames`:
  </script>
 ```
 
+### Change (or just Reload) Element Scripts at Runtime ###
+
+if you want to change the `_` attribute (containg the element's \_hyperscript script) at runtime (e.g., as part of a \_hyperscript REPL) you can not just set that attribute to a new value as \_hyperscript will not automatically re-evaluate the new attribute contents. One solution (perhaps not the best one) is to prepend the following script element before the \_hyperscript runtime itself:
+
+```html
+ <script type="text/hyperscript">
+  def setScriptOf (Element, Script)
+    cloneNode() from Element then set clonedElement to it
+      set @_ of clonedElement to Script
+
+      js (Element, clonedElement)
+        while (Element.hasChildNodes()) {
+          clonedElement.appendChild(Element.firstChild)
+        }
+      end
+    put clonedElement after Element
+    remove Element
+  end
+ </script>
+```
+
+You may then update the script of a given HTML element using
+
+```
+ setScriptOf(<element>,<new-script>)
+```
+
+where `<element>` refers to an existing HTML element and `<new-script>` represents the (new or initial) script for `<element>`.
+
+`setScriptOf` is itself idempotent (i.e., may safely be called multiple times with the same arguments) provided that the given `<script>` is idempotent itself (i.e., does not produce side-effects like in an `init` block)
+
+> Caveats: `setScriptOf` has to clone the affected HTML element in order to set the given script. While it moves any existing contents of the old HTML element to the new clone (before the new script is evaluated), some element contents could probably produce unwanted side-effects
+
 
 
 ## License ##
