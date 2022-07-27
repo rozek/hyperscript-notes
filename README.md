@@ -183,7 +183,29 @@ where `<element>` refers to an existing HTML element and `<new-script>` represen
 
 > Caveats: `setScriptOf` has to clone the affected HTML element in order to set the given script. While it moves any existing contents of the old HTML element to the new clone (before the new script is evaluated), some element contents could probably produce unwanted side-effects
 
+### \_hyperscript "methods" for (scripted) HTML Elements ###
 
+If you want \_hyperscript scripted HTML elements to act like "components" offering more complex functionality you will probably want these elements to provide "methods". Fortunately, such "methods" can be implemented with ease:
+
+* within your element define your \_hyperscript functions as usual
+* in order to make them "publically" available (i.e., to "export" them) set these functions as element properties:<br>&nbsp;`init set my <method> to <method> end`<br>where `<method>` is the \_hyperscript function name (warning: this may collide with already existing internal methods of the DOM element)
+
+```
+ <div _="
+   def publicMethod
+   -- insert your implementation here
+   end
+   
+   init
+     set my publicMethod to publicMethod
+   end
+ ">...</div>
+```
+
+From elsewhere in your \_hyperscript code
+
+* the method may now be invoked using a "pseudo command": `<method>(<argument-list>) on <element>` (or similar)
+* any values returned from the method will then become available as `the result` or simply `it`
 
 ## License ##
 
