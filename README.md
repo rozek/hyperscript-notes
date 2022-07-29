@@ -8,7 +8,7 @@ This repository is a (growing) collection of notes on \_hyperscript with code ex
 
 > Just a small note: if you like this repository and seem to benefit from its contents, consider "starring" it (you will find the "Star" button on the top right of this page), so that I know which of my repositories to take most care of.
 
-### Evaluate Code at Runtime ###
+### Evaluate some Code at Runtime ###
 
 If you want to implement a \_hyperscript REPL or a "message box" like in HyperCard, LiveCode or similar, you will need a mechanism to evaluate \_hyperscript code at runtime. One solution (perhaps not the best one) is to prepend the following script element before the \_hyperscript runtime itself:
 
@@ -49,7 +49,7 @@ provided that the given code fits into the `init` section of the `_` attribute f
 
 Does anybody have a better idea?
 
-### Define Behavior at Runtime ###
+### Define a Behavior at Runtime ###
 
 If you want to dynamically load behaviors or create behaviors at runtime (e.g., as part of a \_hyperscript REPL) you will need a mechanism to define behaviors at runtime. One solution (perhaps not the best one) is to prepend the following script element before the \_hyperscript runtime itself:
 
@@ -92,7 +92,7 @@ and `install` it into new HTML elements (created _after_ defining their behavior
  ` after ...
 ```
 
-### Update existing Behavior at Runtime ###
+### Update an existing Behavior at Runtime ###
 
 If you want to update the implementation of an already existing behavior at runtime (e.g., as part of a \_hyperscript REPL) you may do so by using the `defineBehavior` described above and a script which defines a behavior with the same name as the one you want to update.
 
@@ -152,7 +152,7 @@ The following examples shows how to use `knownBehaviorNames`:
  </script>
 ```
 
-### Change (or just Reload) Element Scripts at Runtime ###
+### Change (or just reload) some Element Scripts at Runtime ###
 
 if you want to change the `_` attribute (containg the element's \_hyperscript script) at runtime (e.g., as part of a \_hyperscript REPL) you can not just set that attribute to a new value as \_hyperscript will not automatically re-evaluate the new attribute contents. One solution (perhaps not the best one) is to prepend the following script element before the \_hyperscript runtime itself:
 
