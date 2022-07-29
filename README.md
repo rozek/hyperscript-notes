@@ -47,6 +47,8 @@ provided that the given code fits into the `init` section of the `_` attribute f
 > * because of the way `evaluate` is implemented, **the given code is evaluated after a small delay** (i.e., will not finish before `evaluate` has ended)
 > * as a consequence, **the given code can not return any value** to the calling \_hyperscript
 
+Does anybody have a better idea?
+
 ### Define Behavior at Runtime ###
 
 If you want to dynamically load behaviors or create behaviors at runtime (e.g., as part of a \_hyperscript REPL) you will need a mechanism to define behaviors at runtime. One solution (perhaps not the best one) is to prepend the following script element before the \_hyperscript runtime itself:
