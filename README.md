@@ -1,6 +1,6 @@
 # hyperscript-notes #
 
-some notes on _hyperscript
+...just a few notes on _hyperscript
 
 [\_hyperscript](https://github.com/bigskysoftware/_hyperscript) is a relatively new programming language inspired inspired by [HyperTalk](https://en.wikipedia.org/wiki/HyperTalk).
 
