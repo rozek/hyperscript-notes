@@ -183,7 +183,8 @@ where `<element>` refers to an existing HTML element and `<new-script>` represen
 
 `setScriptOf` is itself idempotent (i.e., may safely be called multiple times with the same arguments) provided that the given `<script>` is idempotent itself (i.e., does not produce side-effects like in an `init` block)
 
-> Caveats: `setScriptOf` has to clone the affected HTML element in order to set the given script. While it moves any existing contents of the old HTML element to the new clone (before the new script is evaluated), some element contents could probably produce unwanted side-effects
+> Caveats: `setScriptOf` has to clone the affected HTML element in order to set the given script. While it moves any existing contents of the old HTML element to the new clone (before the new script is evaluated), some element contents could probably produce unwanted side-effects.
+> additionally, any references to the original DOM element will now point to an orphaned HTML fragment, as it will no longer be part of the DOM and all its contents will have been moved into the newly created clone
 
 ### \_hyperscript "methods" for (scripted) HTML Elements ###
 
