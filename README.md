@@ -51,7 +51,7 @@ Does anybody have a better idea?
 
 ### Define a Behavior at Runtime ###
 
-If you want to dynamically load behaviors or create behaviors at runtime (e.g., as part of a \_hyperscript REPL) you will need a mechanism to define behaviors at runtime. One solution (perhaps not the best one) is to prepend the following script element before the \_hyperscript runtime itself:
+If you want to dynamically load behaviors or create behaviors at runtime (e.g., as part of a \_hyperscript REPL) you will need a mechanism to define behaviors at runtime. One solution (perhaps not the best one) is to insert the following script element before the \_hyperscript runtime itself:
 
 ```html
  <script type="text/hyperscript">
