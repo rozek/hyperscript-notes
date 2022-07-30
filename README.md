@@ -154,7 +154,7 @@ The following examples shows how to use `knownBehaviorNames`:
 
 ### Change (or just reload) some Element Scripts at Runtime ###
 
-if you want to change the `_` attribute (containg the element's \_hyperscript script) at runtime (e.g., as part of a \_hyperscript REPL) you can not just set that attribute to a new value as \_hyperscript will not automatically re-evaluate the new attribute contents. One solution (perhaps not the best one) is to prepend the following script element before the \_hyperscript runtime itself:
+if you want to change the `_` attribute (containg the element's \_hyperscript script) at runtime (e.g., as part of a \_hyperscript REPL) you can not just set that attribute to a new value as \_hyperscript will not automatically re-evaluate the new attribute contents. One solution (perhaps not the best one) is to insert the following script element before the \_hyperscript runtime itself:
 
 ```html
  <script type="text/hyperscript">
