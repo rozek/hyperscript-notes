@@ -28,6 +28,8 @@ With respect to the statement from the docs "Events are at the core of hyperscri
 > 
 > * beware of _race conditions_(!) which may occur, because another event handler has already started running before your current one has been completed
 
+One of the biggest advantages of JavaScript's single-threaded execution model was the prevention of such race conditions - the fact, that \_hyperscript re-introduces them by asynchronous event handlers destroys the illusion of easy programmability
+
 ### Evaluate some Code at Runtime ###
 
 If you want to implement a \_hyperscript REPL or a "message box" like in HyperCard, LiveCode or similar, you will need a mechanism to evaluate \_hyperscript code at runtime. One solution (perhaps not the best one) is to insert the following script element before the \_hyperscript runtime itself:
