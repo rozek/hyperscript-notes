@@ -23,9 +23,9 @@ With respect to the statement from the docs "Events are at the core of hyperscri
 > * be _very_ carefull with unknown code or code that is known to be asynchronous
 > * whenever possible, use `event.preventDefault()` and/or `event.stop(Immediate)Propagation()` right at the beginning of your script if you want to stop event propagation and/or prevent the browser's default action for an event
 > * keep in mind, that a `halt` command may have no effect on the browser's event propagation and default handling
-> &nbsp;
+> 
 > but worst of all
-> &nbsp;
+> 
 > * beware of _race conditions_(!) which may occur, because another event handler has already started running before your current one has been completed
 
 ### Evaluate some Code at Runtime ###
