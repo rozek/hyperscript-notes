@@ -8,6 +8,26 @@ This repository is a (growing) collection of notes on \_hyperscript with code ex
 
 > Just a small note: if you like this repository and seem to benefit from its contents, consider "starring" it (you will find the "Star" button on the top right of this page), so that I know which of my repositories to take most care of.
 
+### "halt" in asynchronous Event Handlers ###
+
+While "async transparency" is an important and useful characteristic of \_hyperscript, it turns out to be counter-productive, when it comes to event handling: \_hyperscript code which looks synchronous at a first glance, may still actually be asynchronous from the JavaScript perspective - but asynchronous JavaScript event handlers may have a number of unwanted side-effects:
+
+* first of all, `preventDefault` and `stop(Immediate)Propagation` only work as intended when invoked _before_ the first asynchronous function call - afterwards, they are useless at best, or produce race conditions at worst!
+* while a synchronous event handler prevents other events from being handled as long as it is running, an asynchronous handler does not. As a consequence, subsequent handlers may start running before previous ones have finished - widely opening a door for nasty **race conditions**!
+
+As a consequence, the `halt` command becomes completely useless when placed after actually asynchronous statements - but because of "async transparency" you probably never know if your code is synchronous or not...
+
+With respect to the statement from the docs "Events are at the core of hyperscript, and event handlers are the primary entry point into most hyperscript code.", these restrictions are a severe design flaw - and presumably one which cannot easily be fixed.
+
+> **Conclusion:**
+> * be _very_ carefull with unknown code or code that is known to be asynchronous
+> * whenever possible, use `event.preventDefault()` and/or `event.stop(Immediate)Propagation()` right at the beginning of your script
+> * keep in mind, that a `halt` command may have no effect on the browser's event propagation and default handling
+> &nbsp;
+> but worst of all
+> &nbsp;
+> * beware of _race conditions_(!) which may occur, because another event handler has already started running before your current one has been completed
+
 ### Evaluate some Code at Runtime ###
 
 If you want to implement a \_hyperscript REPL or a "message box" like in HyperCard, LiveCode or similar, you will need a mechanism to evaluate \_hyperscript code at runtime. One solution (perhaps not the best one) is to insert the following script element before the \_hyperscript runtime itself:
