@@ -125,7 +125,7 @@ As a result,
 
 If you want all HTML elements to use the updated behavior you will have to reload their scripts as shown below (provided that existing element scripts remain compatible with the updated behavior - otherwise you will have to update the element scripts anyway)
 
-### List all curently known Behavior Names ###
+### List all currently known Behavior Names ###
 
 If you want to know which behaviors have already been defined, you may use the following code:
 
