@@ -4,7 +4,9 @@
 
 [\_hyperscript](https://github.com/bigskysoftware/_hyperscript) is a relatively new programming language inspired inspired by [HyperTalk](https://en.wikipedia.org/wiki/HyperTalk).
 
-This repository is a (growing) collection of notes on \_hyperscript with code examples that go beyond of what a "normal" programmer would probably need.
+This repository is a ~~(growing)~~ collection of notes on \_hyperscript with code examples that go beyond of what a "normal" programmer would probably need.
+
+> to be honest: because of the design flaws described below, the author has given up working with _hyperscript - for that reason, this list of notes will not be continued
 
 > Just a small note: if you like this repository and seem to benefit from its contents, consider "starring" it (you will find the "Star" button on the top right of this page), so that I know which of my repositories to take most care of.
 
